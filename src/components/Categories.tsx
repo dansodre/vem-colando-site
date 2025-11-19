@@ -35,8 +35,8 @@ const categories = [
 
 const Categories = () => {
   return (
-    <section id="categorias" className="py-20 bg-muted/30">
-      <div className="container mx-auto px-4">
+    <section id="categorias" className="pt-16 pb-20 bg-muted/30">
+      <div className="mx-auto w-full max-w-[1400px] px-6 lg:px-10">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Nossas Categorias
@@ -46,7 +46,7 @@ const Categories = () => {
           </p>
         </div>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-0 justify-items-center">
           {categories.map((category) => {
             const colorClasses = {
               teal: "border-teal-500 bg-teal-500 hover:bg-teal-600",
@@ -59,7 +59,7 @@ const Categories = () => {
 
             return (
               <div key={category.title} className="flex flex-col items-center text-center gap-4 group">
-                <Card className={`relative w-64 h-64 rounded-full overflow-hidden shadow-lg border-4 ${borderClass} transition-transform duration-300 group-hover:scale-105`}>
+                <Card className={`relative w-52 h-52 rounded-full overflow-hidden shadow-lg border-4 ${borderClass} transition-transform duration-300 group-hover:scale-105`}>
                   <img src={category.imageUrl} alt={category.title} className="w-full h-full object-cover" />
                 </Card>
                 <div className="space-y-2">

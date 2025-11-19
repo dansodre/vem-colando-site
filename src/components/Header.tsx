@@ -22,28 +22,28 @@ const Header = () => {
   const { isAuthenticated, user, logout } = useAuth();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container mx-auto px-4">
-        <div className="flex h-20 items-center justify-between">
+    <header className="sticky top-0 z-50 w-full border-b border-b-purple-500/70 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container mx-auto px-6 lg:px-10 max-w-[1400px]">
+        <div className="flex h-[5.5rem] items-center justify-between">
           <div className="flex items-center gap-8">
-            <a href="/" className="flex items-center">
-              <img src={logo} alt="Vem Colando" className="h-16 w-auto" />
+            <a href="/" className="flex items-center -my-1">
+              <img src={logo} alt="Vem Colando" className="h-[92px] w-auto" />
             </a>
-            <nav className="hidden md:flex items-center gap-8 text-xl">
-              <Link to="/" className=" text-foreground hover:text-secondary transition-colors">
+            <nav className="hidden md:flex items-center gap-8 text-xl font-semibold tracking-tight">
+              <Link to="/" className="inline-flex items-center text-foreground/80 transition-colors duration-[1200ms] ease-out hover:text-secondary hover:scale-[1.03]">
                 Home
               </Link>
-              <Link to="/produtos" className=" text-foreground hover:text-secondary transition-colors">
+              <Link to="/produtos" className="inline-flex items-center text-foreground/80 transition-colors duration-[1200ms] ease-out hover:text-secondary hover:scale-[1.03]">
                 Nossa Loja
               </Link>
-              <Link to="/categorias" className=" text-foreground hover:text-secondary transition-colors">
+              <Link to="/categorias" className="inline-flex items-center text-foreground/80 transition-colors duration-[1200ms] ease-out hover:text-secondary hover:scale-[1.03]">
                 Categorias
               </Link>
-              <Link to="/sobre" className=" text-foreground hover:text-secondary transition-colors">
-                Sobre
+              <Link to="/sobre" className="inline-flex items-center text-foreground/80 transition-colors duration-[1200ms] ease-out hover:text-secondary hover:scale-[1.03]">
+                Sobre Nós
               </Link>
-              <Link to="/blog" className=" text-foreground hover:text-secondary transition-colors">Blog</Link>
-              <Link to="/contato" className=" text-foreground hover:text-secondary transition-colors">
+              <Link to="/blog" className="inline-flex items-center text-foreground/80 transition-colors duration-[1200ms] ease-out hover:text-secondary hover:scale-[1.03]">Blog</Link>
+              <Link to="/contato" className="inline-flex items-center text-foreground/80 transition-colors duration-[1200ms] ease-out hover:text-secondary hover:scale-[1.03]">
                 Contato
               </Link>
             </nav>
@@ -117,14 +117,14 @@ const Header = () => {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="w-3/4">
-                <nav className="grid gap-6 text-base font-medium mt-8">
+                <nav className="grid gap-6 text-base font-semibold mt-8 text-foreground/80">
                   <Link to="/" className="flex items-center gap-2 text-lg  mb-4">
                     <img src={logo} alt="Vem Colando" className="h-12 w-auto" />
                     <span className="font-bold">Vem Colando</span>
                   </Link>
                   <Link to="/produtos" className="hover:text-foreground">Nossa Loja</Link>
                   <Link to="/categorias" className="text-muted-foreground hover:text-foreground">Categorias</Link>
-                  <Link to="/sobre" className="text-muted-foreground hover:text-foreground">Sobre</Link>
+                  <Link to="/sobre" className="text-muted-foreground hover:text-foreground">Sobre Nós</Link>
                   <Link to="/blog" className="text-muted-foreground hover:text-foreground">Blog</Link>
                   <Link to="/contato" className="text-muted-foreground hover:text-foreground">Contato</Link>
                 </nav>

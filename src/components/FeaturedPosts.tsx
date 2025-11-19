@@ -24,15 +24,15 @@ const FeaturedPosts = () => {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Fique por Dentro</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Dicas, novidades e inspirações do nosso blog.</p>
         </div>
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-6">
           {posts.map((post: Post) => (
             <Link to={`/blog/${post.slug}`} key={post.id}>
-              <Card className="h-full flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
+              <Card className="h-full max-w-sm mx-auto flex flex-col overflow-hidden hover:shadow-lg transition-shadow">
                 <CardHeader className="p-0">
-                  <img src={post.image_url} alt={post.title} className="w-full h-48 object-cover" />
+                  <img src={post.image_url} alt={post.title} className="w-full h-40 md:h-44 object-cover" />
                 </CardHeader>
-                <CardContent className="flex-grow p-6">
-                  <CardTitle className="text-xl mb-2 line-clamp-2">{post.title}</CardTitle>
+                <CardContent className="flex-grow p-5">
+                  <CardTitle className="text-lg mb-2 line-clamp-2">{post.title}</CardTitle>
                   <CardDescription className="text-sm text-muted-foreground">Por {post.author}</CardDescription>
                 </CardContent>
               </Card>

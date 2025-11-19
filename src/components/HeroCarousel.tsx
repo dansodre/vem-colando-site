@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { getBanners } from '@/services/siteApi';
-import { Card, CardContent } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -11,8 +10,8 @@ import {
 } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { Link } from 'react-router-dom';
-import { Button } from './ui/button';
 import { type UseEmblaCarouselType } from 'embla-carousel-react';
+import { Skeleton } from '@/components/ui/skeleton';
 
 const HeroCarousel = () => {
   const { data: banners, isLoading } = useQuery({ queryKey: ['banners'], queryFn: getBanners });
@@ -30,11 +29,28 @@ const HeroCarousel = () => {
     return () => { emblaApi.off('select', onSelect); };
   }, [emblaApi]);
 
-  if (isLoading) return <div>Carregando...</div>; // Ou um skeleton
-  if (!banners || banners.length === 0) return null;
+  if (isLoading) {
+    return (
+      <section className="w-full">
+        <div className="w-full h-[60vh] max-h-[480px]">
+          <Skeleton className="w-full h-full" />
+        </div>
+      </section>
+    );
+  }
+
+  if (!banners || banners.length === 0) {
+    return (
+      <section className="w-full">
+        <div className="w-full h-[60vh] max-h-[480px] flex items-center justify-center bg-muted/40 text-muted-foreground text-center px-4">
+          <p>Nenhum banner disponível no momento.</p>
+        </div>
+      </section>
+    );
+  }
 
   return (
-    <section className="w-full">
+    <section className="w-full border-y border-purple-500">
       <Carousel 
         setApi={setEmblaApi}
         className="w-full" 
@@ -50,7 +66,7 @@ const HeroCarousel = () => {
           {banners.map((banner) => (
             <CarouselItem key={banner.id}>
               <Link to={banner.button_link || '#'}>
-                <div className="w-full h-[50vh] max-h-[400px] bg-gray-200">
+                <div className="w-full h-[60vh] max-h-[480px] bg-gray-200">
                   <picture className="w-full h-full">
                     {banner.image_url_mobile && <source media="(max-width: 768px)" srcSet={banner.image_url_mobile} />}
                     <img 

@@ -40,6 +40,7 @@ import AdminCupons from "./pages/admin/AdminCupons";
 import AdminProtectedRoute from "./components/admin/AdminProtectedRoute";
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
+import ScrollToTop from "./components/ScrollToTop";
 
 // Substitua pela sua chave publicável do Stripe
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY);
@@ -52,6 +53,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Router>
+            <ScrollToTop />
             <Elements stripe={stripePromise}>
               <AuthProvider>
                 <CartProvider>
