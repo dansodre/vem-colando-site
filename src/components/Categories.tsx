@@ -1,34 +1,35 @@
-import { BookOpen, GraduationCap, Home, Briefcase } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const categories = [
   {
-    icon: BookOpen,
     title: "Etiquetas Escolares",
     description: "Para material escolar, uniformes e objetos pessoais",
-    color: "secondary",
+    imageUrl: "/categories/imagem_kit_6.png",
     name: "etiquetas-escolares",
+    color: "teal",
   },
   {
-    icon: GraduationCap,
     title: "Kits Educativos",
     description: "Conjuntos completos para organização",
-    color: "accent",
+    imageUrl: "/categories/imagem_kit_4.png",
     name: "kits-educativos",
+    color: "accent",
   },
   {
-    icon: Home,
     title: "Casa & Organização",
     description: "Para potes, gavetas e compartimentos",
-    color: "teal",
+    imageUrl: "/categories/imagem_empreendedor.png",
     name: "casa-organizacao",
+    color: "secondary",
   },
   {
-    icon: Briefcase,
     title: "Corporativo",
     description: "Soluções personalizadas para empresas",
-    color: "primary",
+    imageUrl: "/categories/imagem_embalagem_empreendedor.png",
     name: "corporativo",
+    color: "primary",
   },
 ];
 
@@ -45,33 +46,33 @@ const Categories = () => {
           </p>
         </div>
         
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 justify-items-center">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 justify-items-center">
           {categories.map((category) => {
-            const Icon = category.icon;
             const colorClasses = {
-              secondary: "bg-secondary/10 hover:bg-secondary/20 border-secondary/20 text-secondary",
-              accent: "bg-accent/10 hover:bg-accent/20 border-accent/20 text-accent",
-              teal: "bg-teal/10 hover:bg-teal/20 border-teal/20 text-teal",
-              primary: "bg-primary/10 hover:bg-primary/20 border-primary/20 text-primary",
+              teal: "border-teal-500 bg-teal-500 hover:bg-teal-600",
+              accent: "border-green-500 bg-green-500 hover:bg-green-600",
+              secondary: "border-orange-500 bg-orange-500 hover:bg-orange-600",
+              primary: "border-purple-500 bg-purple-500 hover:bg-purple-600",
             };
-            
+            const borderClass = colorClasses[category.color as keyof typeof colorClasses].split(' ')[0];
+            const buttonClass = colorClasses[category.color as keyof typeof colorClasses].split(' ').slice(1).join(' ');
+
             return (
-              <div key={category.title}>
-                <Card 
-                  className={`${colorClasses[category.color as keyof typeof colorClasses]} border-2 transition-all cursor-pointer hover:scale-105 hover:shadow-lg w-64 h-64 rounded-full flex flex-col items-center justify-center text-center`}
-                >
-                  <CardContent className="p-6 space-y-4">
-                    <div className="h-16 w-16 rounded-full bg-background/50 flex items-center justify-center">
-                      <Icon className="h-6 w-6" />
-                    </div>
-                    <h3 className="font-bold text-lg text-foreground">
-                      {category.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      {category.description}
-                    </p>
-                  </CardContent>
+              <div key={category.title} className="flex flex-col items-center text-center gap-4 group">
+                <Card className={`relative w-64 h-64 rounded-full overflow-hidden shadow-lg border-4 ${borderClass} transition-transform duration-300 group-hover:scale-105`}>
+                  <img src={category.imageUrl} alt={category.title} className="w-full h-full object-cover" />
                 </Card>
+                <div className="space-y-2">
+                  <h3 className="font-bold text-lg text-foreground">
+                    {category.title}
+                  </h3>
+                  <p className="text-sm text-muted-foreground px-4 max-w-xs">
+                    {category.description}
+                  </p>
+                </div>
+                <Link to={`/produtos?category=${category.name}`}>
+                  <Button className={`${buttonClass} text-white rounded-full px-6`}>Explore</Button>
+                </Link>
               </div>
             );
           })}

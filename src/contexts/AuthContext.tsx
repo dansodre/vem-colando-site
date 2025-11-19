@@ -53,17 +53,12 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     await supabase.auth.signOut();
   };
 
-  const signOut = async () => {
-    await supabase.auth.signOut();
-  };
-
   const value = {
     user,
     session,
     isAuthenticated: !!user,
     loading,
     logout,
-    signOut,
   };
 
   return (

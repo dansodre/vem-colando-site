@@ -24,10 +24,10 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4">
-        <div className="flex h-28 items-center justify-between">
+        <div className="flex h-20 items-center justify-between">
           <div className="flex items-center gap-8">
             <a href="/" className="flex items-center">
-              <img src={logo} alt="Vem Colando" className="h-24 w-auto" />
+              <img src={logo} alt="Vem Colando" className="h-16 w-auto" />
             </a>
             <nav className="hidden md:flex items-center gap-8 text-xl">
               <Link to="/" className=" text-foreground hover:text-secondary transition-colors">

@@ -50,7 +50,7 @@ const HeroCarousel = () => {
           {banners.map((banner) => (
             <CarouselItem key={banner.id}>
               <Link to={banner.button_link || '#'}>
-                <div className="w-full h-[60vh] max-h-[500px] bg-gray-200">
+                <div className="w-full h-[50vh] max-h-[400px] bg-gray-200">
                   <picture className="w-full h-full">
                     {banner.image_url_mobile && <source media="(max-width: 768px)" srcSet={banner.image_url_mobile} />}
                     <img 
